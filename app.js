@@ -50,7 +50,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    let input = prompt("Select rock,paper or scissors");
+    let input = prompt(`Select rock,paper or scissors\nCurrent Score is:\nPlayer: ${pScore} vs Computer:${cScore}`);
     console.log("***********************");
     console.log(playRound(input, computerPlay()));
     console.log(`player score is : ${pScore}, computer score is : ${cScore}`)
