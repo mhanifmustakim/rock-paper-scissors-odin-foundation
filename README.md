@@ -1,3 +1,5 @@
-This project is just a simple project to test my conditionals and simple problem solving,
+A game of rock, paper and scissors - Project for TheOdinProject Foundation level
 
-A task in THE ODIN PROJECT, Feel free to look and learn too =)
+In this project, I will demonstrate:
+- Using JS to apply logic in a rock, paper, scissors game
+- Using JS to interact with the DOM of the webpage
