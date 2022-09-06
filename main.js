@@ -1,6 +1,5 @@
 const choices = ["rock", "paper", "scissors"];
 
-
 function chooseRandom(arr) {
     const randIndex = Math.floor(Math.random() * arr.length);
     return arr[randIndex];
@@ -13,7 +12,7 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     let result = {
-        string: `${playerSelection} VS ${computerSelection}! `,
+        string: `${properCase(playerSelection)} VS ${properCase(computerSelection)}! `,
         winner: null,
     }
 
@@ -46,10 +45,15 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
+function properCase(str) {
+    return str[0].toUpperCase() + str.slice(1);
+}
+
 function startGame() {
     let playerScore = 0;
     let computerScore = 0;
 
+    console.log("First to five wins!\n");
     while (playerScore < 5 && computerScore < 5) {
         let playerChoice = prompt("Rock, paper, or scissors?");
         const computerChoice = getComputerChoice();
