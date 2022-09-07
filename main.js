@@ -50,34 +50,6 @@ function properCase(str) {
     return str[0].toUpperCase() + str.slice(1);
 }
 
-// function startGame() {
-//     let playerScore = 0;
-//     let computerScore = 0;
-
-//     console.log("First to five wins!\n");
-//     while (playerScore < 5 && computerScore < 5) {
-//         let playerChoice = prompt("Rock, paper, or scissors?");
-//         const computerChoice = getComputerChoice();
-
-//         // check if playerChoice is valid
-//         while (!choices.includes(playerChoice.toLowerCase().trim())) {
-//             playerChoice = prompt("Please enter either Rock, Paper or Scissors.");
-//         }
-
-//         const roundResult = playRound(playerChoice, computerChoice);
-
-//         if (roundResult.winner === "player") {
-//             playerScore += 1;
-//         } else if (roundResult.winner === "computer") {
-//             computerScore += 1;
-//         }
-
-// console.log(roundResult.string);
-// console.log(`player: ${playerScore}`);
-// console.log(`computer: ${computerScore}`);
-//     }
-// }
-
 function startGame() {
     let isGameOver = false;
     let winScore = 5;
