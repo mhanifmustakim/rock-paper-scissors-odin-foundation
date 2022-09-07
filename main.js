@@ -1,4 +1,5 @@
 const choices = ["rock", "paper", "scissors"];
+const playerSelectionBtns = document.querySelectorAll(".player-select-btn");
 
 function chooseRandom(arr) {
     const randIndex = Math.floor(Math.random() * arr.length);
@@ -49,32 +50,69 @@ function properCase(str) {
     return str[0].toUpperCase() + str.slice(1);
 }
 
+// function startGame() {
+//     let playerScore = 0;
+//     let computerScore = 0;
+
+//     console.log("First to five wins!\n");
+//     while (playerScore < 5 && computerScore < 5) {
+//         let playerChoice = prompt("Rock, paper, or scissors?");
+//         const computerChoice = getComputerChoice();
+
+//         // check if playerChoice is valid
+//         while (!choices.includes(playerChoice.toLowerCase().trim())) {
+//             playerChoice = prompt("Please enter either Rock, Paper or Scissors.");
+//         }
+
+//         const roundResult = playRound(playerChoice, computerChoice);
+
+//         if (roundResult.winner === "player") {
+//             playerScore += 1;
+//         } else if (roundResult.winner === "computer") {
+//             computerScore += 1;
+//         }
+
+// console.log(roundResult.string);
+// console.log(`player: ${playerScore}`);
+// console.log(`computer: ${computerScore}`);
+//     }
+// }
+
 function startGame() {
+    let isGameOver = false;
+    let winScore = 5;
     let playerScore = 0;
     let computerScore = 0;
 
-    console.log("First to five wins!\n");
-    while (playerScore < 5 && computerScore < 5) {
-        let playerChoice = prompt("Rock, paper, or scissors?");
-        const computerChoice = getComputerChoice();
+    const handleInput = (e) => {
+        if (!isGameOver) {
+            const playerChoice = e.target.getAttribute("data-choice");
+            const computerChoice = getComputerChoice();
+            const roundResult = playRound(playerChoice, computerChoice);
 
-        // check if playerChoice is valid
-        while (!choices.includes(playerChoice.toLowerCase().trim())) {
-            playerChoice = prompt("Please enter either Rock, Paper or Scissors.");
+            //Update score
+            if (roundResult.winner === "player") {
+                playerScore += 1;
+            } else if (roundResult.winner === "computer") {
+                computerScore += 1;
+            }
+
+            //Log round results
+            console.log(roundResult.string);
+            console.log(`player: ${playerScore}`);
+            console.log(`computer: ${computerScore}`);
+
+            //Check for gameOver
+            if (playerScore >= winScore || computerScore >= winScore) {
+                isGameOver = true;
+                console.log(`ROUND OVER! ${roundResult.winner} WON!`);
+            }
         }
-
-        const roundResult = playRound(playerChoice, computerChoice);
-
-        if (roundResult.winner === "player") {
-            playerScore += 1;
-        } else if (roundResult.winner === "computer") {
-            computerScore += 1;
-        }
-
-        console.log(roundResult.string);
-        console.log(`player: ${playerScore}`);
-        console.log(`computer: ${computerScore}`);
     }
-}
 
+    // Listen for player input
+    playerSelectionBtns.forEach((btn) => {
+        btn.addEventListener("click", handleInput);
+    })
+}
 startGame();
