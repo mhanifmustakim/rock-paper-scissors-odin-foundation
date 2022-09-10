@@ -4,6 +4,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-size: inherit;
+    color: inherit;
 }
 
 :root {
@@ -36,6 +38,22 @@ header {
     align-items: center;
 }
 
+.justify-space-around {
+    justify-content: space-around;
+}
+
+.selections {
+    height: 15rem;
+    font-size: 3rem;
+    flex: 1;
+    gap: 2rem;
+}
+
+.player-select-btn {
+    padding: 0.1em 0.5em;
+    border-radius: 2em;
+}
+
 #main {
     min-height: 100vh;
 }
@@ -46,6 +64,15 @@ header {
 
 #content {
     flex: 1;
+}
+
+#game-log {
+    height: 10rem;
+    font-size: 1.2rem;
+    border: rgb(53, 53, 66) solid 0.7rem;
+    background-color: rgb(51, 54, 66);
+    color: whitesmoke;
+    padding: 0.5rem 2rem;
 }
 
 #footer {

@@ -17,20 +17,37 @@
                 Rock, Paper, Scissors, Shoot!
             </header>
         </div>
-        <div id="content">
-            <div class="player-select">
-                <button data-choice="rock" class="player-select-btn">
-                    Rock
-                </button>
-                <button data-choice="paper" class="player-select-btn">
-                    Paper
-                </button>
-                <button data-choice="scissors" class="player-select-btn">
-                    Scissors
-                </button>
+        <div id="content" class="container flex-column">
+            <div id="computer-select" class="selections container flex-column justify-center align-center">
+                <p>COMPUTER :</p>
+                <div>
+                    <button data-choice="rock" class="player-select-btn">
+                        Rock
+                    </button>
+                    <button data-choice="paper" class="player-select-btn">
+                        Paper
+                    </button>
+                    <button data-choice="scissors" class="player-select-btn">
+                        Scissors
+                    </button>
+                </div>
             </div>
-            <div>
-                <p id="game-log"></p>
+            <div id="player-select" class="selections container flex-column justify-center align-center">
+                <p>MAKE YOUR CHOICE: </p>
+                <div>
+                    <button data-choice="rock" class="player-select-btn">
+                        Rock
+                    </button>
+                    <button data-choice="paper" class="player-select-btn">
+                        Paper
+                    </button>
+                    <button data-choice="scissors" class="player-select-btn">
+                        Scissors
+                    </button>
+                </div>
+            </div>
+            <div id="game-log">
+                <code>Game Log:</code>
             </div>
         </div>
         <div id="footer" class="container justify-center align-center">

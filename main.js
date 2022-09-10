@@ -1,5 +1,6 @@
 const choices = ["rock", "paper", "scissors"];
-const playerSelectionBtns = document.querySelectorAll(".player-select-btn");
+const playerSelection = document.querySelector("#player-select");
+const playerSelectionBtns = playerSelection.querySelectorAll(".player-select-btn");
 
 function chooseRandom(arr) {
     const randIndex = Math.floor(Math.random() * arr.length);
