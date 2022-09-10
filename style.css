@@ -47,15 +47,30 @@ header {
     font-size: 3rem;
     flex: 1;
     gap: 2rem;
+    color: whitesmoke;
+}
+
+.select-btn {
+    padding: 0.1em 0.5em;
+    border-radius: 2em;
+    color: black;
+}
+
+.computer-select-btn {
+    color: gray;
 }
 
 .player-select-btn {
-    padding: 0.1em 0.5em;
-    border-radius: 2em;
+    background-color: rgb(233, 250, 79);
+}
+
+.player-select-btn:hover {
+    cursor: pointer;
 }
 
 #main {
     min-height: 100vh;
+    background-color: rgb(206, 203, 158);
 }
 
 #header {
@@ -64,6 +79,9 @@ header {
 
 #content {
     flex: 1;
+    background: rgb(78, 84, 104) no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
 }
 
 #game-log {
@@ -72,9 +90,11 @@ header {
     border: rgb(53, 53, 66) solid 0.7rem;
     background-color: rgb(51, 54, 66);
     color: whitesmoke;
-    padding: 0.5rem 2rem;
+    padding: 0.5rem 1rem;
+    margin: 2rem 1rem;
 }
 
 #footer {
     height: 7ch;
+    font-size: 1.2rem;
 }
