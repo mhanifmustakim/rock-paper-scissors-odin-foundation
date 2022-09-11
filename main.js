@@ -2,6 +2,7 @@ const choices = ["rock", "paper", "scissors"];
 const playerSelection = document.querySelector("#player-select");
 const playerSelectionBtns = playerSelection.querySelectorAll(".player-select-btn");
 const gameLog = document.querySelector("#game-log");
+const resetBtn = document.querySelector("#reset-btn");
 
 function chooseRandom(arr) {
     const randIndex = Math.floor(Math.random() * arr.length);
@@ -56,15 +57,16 @@ function updateGameLog(roundResult, playerScore, computerScore, isGameOver = fal
     const logContent = gameLog.querySelector("#log-content");
 
     if (isGameOver) {
-        logContent.textContent = `ROUND OVER! ${roundResult.winner} WON!`;
+        logContent.innerText = `
+        \nROUND OVER! ${roundResult.winner} WON!`;
+    } else {
+        logContent.innerText = `
+        \n${roundResult.string}`
     }
 
-    logContent.innerText = (
-        `\n
-        ${roundResult.string}\n
-        Player Score: ${playerScore}\n
-        Computer Score: ${computerScore}`
-    )
+    logContent.innerText += `
+    \nPlayer Score: ${playerScore} 
+    \nComputer Score: ${computerScore}`
 }
 
 function updateUI(playerChoice, computerChoice) {
@@ -77,8 +79,8 @@ function updateUI(playerChoice, computerChoice) {
     const computerSelect = document.querySelector("#computer-select");
     const playerSelect = document.querySelector("#player-select");
 
-    computerSelect.querySelector(`button[data-choice=${computerChoice}]`).classList.add("selected");
-    playerSelect.querySelector(`button[data-choice=${playerChoice}]`).classList.add("selected");
+    computerSelect.querySelector(`button[data-choice= ${computerChoice}]`).classList.add("selected");
+    playerSelect.querySelector(`button[data-choice= ${playerChoice}]`).classList.add("selected");
 
     computerSelect.addEventListener("transitionend", onTransitionEnd);
     playerSelect.addEventListener("transitionend", onTransitionEnd)
@@ -110,12 +112,16 @@ function startGame() {
         }
 
         //Log round results
-        updateGameLog(roundResult, playerScore, computerScore, true);
+        updateGameLog(roundResult, playerScore, computerScore);
 
         //Check for gameOver
         if (playerScore >= winScore || computerScore >= winScore) {
             isGameOver = true;
-            updateGameLog(roundResult, playerScore, computerScore);
+            updateGameLog(roundResult, playerScore, computerScore, isGameOver);
+            playerSelectionBtns.forEach((btn) => {
+                btn.classList.add("display-none")
+            })
+            resetBtn.classList.remove("display-none");
         }
     }
 

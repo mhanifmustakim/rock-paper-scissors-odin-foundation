@@ -42,6 +42,10 @@ header {
     justify-content: space-around;
 }
 
+.display-none {
+    display: none;
+}
+
 .selections {
     height: 15rem;
     font-size: 3rem;
@@ -61,7 +65,8 @@ header {
     color: gray;
 }
 
-.player-select-btn:hover {
+.player-select-btn:hover,
+.reset-btn:hover {
     cursor: pointer;
     background-color: rgb(233, 250, 79);
 }
