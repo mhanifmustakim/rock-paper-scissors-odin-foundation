@@ -86,6 +86,16 @@ function updateUI(playerChoice, computerChoice) {
     playerSelect.addEventListener("transitionend", onTransitionEnd)
 }
 
+resetBtn.addEventListener("click", () => {
+    playerSelectionBtns.forEach((btn) => {
+        btn.classList.remove("selected");
+        btn.classList.remove("display-none");
+    })
+    gameLog.querySelector("#log-content").innerText = "";
+    resetBtn.classList.add("display-none");
+    startGame();
+})
+
 function startGame() {
     let isGameOver = false;
     let winScore = 5;
