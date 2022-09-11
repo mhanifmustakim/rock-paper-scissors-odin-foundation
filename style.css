@@ -85,13 +85,14 @@ header {
 }
 
 #game-log {
-    height: 10rem;
+    height: 12rem;
     font-size: 1.2rem;
     border: rgb(53, 53, 66) solid 0.7rem;
     background-color: rgb(51, 54, 66);
     color: whitesmoke;
     padding: 0.5rem 1rem;
     margin: 2rem 1rem;
+    line-height: 1em;
 }
 
 #footer {

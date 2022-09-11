@@ -1,6 +1,7 @@
 const choices = ["rock", "paper", "scissors"];
 const playerSelection = document.querySelector("#player-select");
 const playerSelectionBtns = playerSelection.querySelectorAll(".player-select-btn");
+const gameLog = document.querySelector("#game-log");
 
 function chooseRandom(arr) {
     const randIndex = Math.floor(Math.random() * arr.length);
@@ -51,6 +52,21 @@ function properCase(str) {
     return str[0].toUpperCase() + str.slice(1);
 }
 
+function updateGameLog(roundResult, playerScore, computerScore, isGameOver = false) {
+    const logContent = gameLog.querySelector("#log-content");
+
+    if (isGameOver) {
+        logContent.textContent = `ROUND OVER! ${roundResult.winner} WON!`;
+    }
+
+    logContent.innerText = (
+        `\n
+        ${roundResult.string}\n
+        Player Score: ${playerScore}\n
+        Computer Score: ${computerScore}`
+    )
+}
+
 function startGame() {
     let isGameOver = false;
     let winScore = 5;
@@ -58,28 +74,28 @@ function startGame() {
     let computerScore = 0;
 
     const handleInput = (e) => {
-        if (!isGameOver) {
-            const playerChoice = e.target.getAttribute("data-choice");
-            const computerChoice = getComputerChoice();
-            const roundResult = playRound(playerChoice, computerChoice);
+        if (isGameOver) {
+            return
+        }
 
-            //Update score
-            if (roundResult.winner === "player") {
-                playerScore += 1;
-            } else if (roundResult.winner === "computer") {
-                computerScore += 1;
-            }
+        const playerChoice = e.target.getAttribute("data-choice");
+        const computerChoice = getComputerChoice();
+        const roundResult = playRound(playerChoice, computerChoice);
 
-            //Log round results
-            console.log(roundResult.string);
-            console.log(`player: ${playerScore}`);
-            console.log(`computer: ${computerScore}`);
+        //Update score
+        if (roundResult.winner === "player") {
+            playerScore += 1;
+        } else if (roundResult.winner === "computer") {
+            computerScore += 1;
+        }
 
-            //Check for gameOver
-            if (playerScore >= winScore || computerScore >= winScore) {
-                isGameOver = true;
-                console.log(`ROUND OVER! ${roundResult.winner} WON!`);
-            }
+        //Log round results
+        updateGameLog(roundResult, playerScore, computerScore, true);
+
+        //Check for gameOver
+        if (playerScore >= winScore || computerScore >= winScore) {
+            isGameOver = true;
+            updateGameLog(roundResult, playerScore, computerScore);
         }
     }
 
