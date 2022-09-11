@@ -67,6 +67,23 @@ function updateGameLog(roundResult, playerScore, computerScore, isGameOver = fal
     )
 }
 
+function updateUI(playerChoice, computerChoice) {
+    const onTransitionEnd = (e) => {
+        if (e.propertyName == "transform") {
+            e.target.classList.remove("selected");
+        }
+    }
+
+    const computerSelect = document.querySelector("#computer-select");
+    const playerSelect = document.querySelector("#player-select");
+
+    computerSelect.querySelector(`button[data-choice=${computerChoice}]`).classList.add("selected");
+    playerSelect.querySelector(`button[data-choice=${playerChoice}]`).classList.add("selected");
+
+    computerSelect.addEventListener("transitionend", onTransitionEnd);
+    playerSelect.addEventListener("transitionend", onTransitionEnd)
+}
+
 function startGame() {
     let isGameOver = false;
     let winScore = 5;
@@ -81,6 +98,9 @@ function startGame() {
         const playerChoice = e.target.getAttribute("data-choice");
         const computerChoice = getComputerChoice();
         const roundResult = playRound(playerChoice, computerChoice);
+
+        //Update UI of computer & player Selection
+        updateUI(playerChoice, computerChoice);
 
         //Update score
         if (roundResult.winner === "player") {

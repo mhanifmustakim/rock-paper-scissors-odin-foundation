@@ -54,18 +54,22 @@ header {
     padding: 0.1em 0.5em;
     border-radius: 2em;
     color: black;
+    transition: 0.1s;
 }
 
 .computer-select-btn {
     color: gray;
 }
 
-.player-select-btn {
+.player-select-btn:hover {
+    cursor: pointer;
     background-color: rgb(233, 250, 79);
 }
 
-.player-select-btn:hover {
-    cursor: pointer;
+.selected {
+    background-color: rgb(233, 250, 79);
+    transform: scale(1.05);
+    color: black;
 }
 
 #main {
